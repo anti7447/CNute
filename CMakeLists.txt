@@ -11,9 +11,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widget)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-file(GLOB GUI_SOURCES "GUI/*.cpp" "GUI/*.h" "GUI/*.ui")
+file(GLOB GUI_SOURCES "src/GUI/*.cpp" "src/GUI/*.h" "src/GUI/*.ui")
 set(PROJECT_SOURCES
-        main.cpp
+        src/main.cpp
         ${GUI_SOURCES}
 )
 
