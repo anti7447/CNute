@@ -16,7 +16,25 @@
   <property name="styleSheet">
    <string notr="true">background-color: #2B2B2B</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="closeButton">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>0</y>
+      <width>32</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../icons/close_icon.png</normaloff>../icons/close_icon.png</iconset>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <resources/>
  <connections/>
