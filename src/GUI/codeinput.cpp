@@ -1,4 +1,5 @@
 #include "codeinput.h"
+#include "syntaxhighlighter.h"
 #include <QMenu>
 #include <QPalette>
 #include <QKeyEvent>
@@ -13,6 +14,9 @@ CodeInput::CodeInput(QWidget *parent)
     QPalette palette = this->palette();
     palette.setColor(QPalette::Text, Qt::white);
     setPalette(palette);
+
+    // Создаем и присоединяем SyntaxHighlighter
+    SyntaxHighlighter *highlighter = new SyntaxHighlighter(document());
 }
 
 CodeInput::~CodeInput() { }

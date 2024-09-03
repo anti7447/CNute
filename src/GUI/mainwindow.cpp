@@ -33,7 +33,7 @@ void MainWindow::on_openButton_clicked()
             QTextStream in(&file);
             QString text = in.readAll();
             if (codeInput != nullptr) {
-                codeInput->setPlainText(text); // Используем setPlainText для замены содержимого
+                codeInput->setPlainText(text);
             } else {
                 qDebug() << "codeInput is null!";
             }
