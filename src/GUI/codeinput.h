@@ -9,7 +9,7 @@ class CodeInput : public QPlainTextEdit
 
 public:
     explicit CodeInput(QWidget *parent = nullptr);
-    ~CodeInput() override;
+    ~CodeInput();
 
 protected:
     void keyPressEvent(QKeyEvent *e) override;

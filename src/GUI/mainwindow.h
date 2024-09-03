@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "codeinput.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,9 +19,12 @@ public:
     ~MainWindow();
 
 private slots:
+    void on_openButton_clicked();
+    void on_saveButton_clicked();
     void closeWindow();
 
 private:
     Ui::MainWindow *ui;
+    CodeInput *codeInput;
 };
 #endif // MAINWINDOW_H
