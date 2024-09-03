@@ -16,5 +16,4 @@ protected:
     void contextMenuEvent(QContextMenuEvent *e) override;
 };
 
-
 #endif // CODEINPUT_H
