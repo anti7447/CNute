@@ -4,12 +4,17 @@
 #include <QPalette>
 #include <QKeyEvent>
 #include <QTextCursor>
+#include <QFont>
 
 CodeInput::CodeInput(QWidget *parent)
     : QPlainTextEdit(parent) {
     setTabStopDistance(40);
     setLineWrapMode(QPlainTextEdit::NoWrap);
     setGeometry(70, 80, 750, 450);
+    
+    // Enable monospace
+    QFont monospace("Monospace");
+    setFont(monospace);
 
     QPalette palette = this->palette();
     palette.setColor(QPalette::Text, Qt::white);
@@ -22,21 +27,43 @@ CodeInput::CodeInput(QWidget *parent)
 CodeInput::~CodeInput() { }
 
 void CodeInput::keyPressEvent(QKeyEvent *e) {
-    if (e->key() == Qt::Key_Up || e->key() == Qt::Key_Down) {
+
+    // ===============================================
+
+    if (e->key() == Qt::Key_Up) {
         QTextCursor cursor = textCursor();
         int currentBlockNumber = cursor.blockNumber();
 
-        if (e->key() == Qt::Key_Up) {
-            if (currentBlockNumber > 0) {
-                cursor.movePosition(QTextCursor::PreviousBlock);
-                cursor.movePosition(QTextCursor::EndOfBlock);
-            }
-        } else if (e->key() == Qt::Key_Down) {
-            cursor.movePosition(QTextCursor::NextBlock);
-            cursor.movePosition(QTextCursor::EndOfBlock);
-        }
+        if (currentBlockNumber == 0)
+            cursor.movePosition(QTextCursor::StartOfLine);
+        
+        else
+            cursor.movePosition(QTextCursor::Up);
 
         setTextCursor(cursor);
+
+    // ===============================================
+
+    } else if (e->key() == Qt::Key_Down) {
+        QTextCursor cursor = textCursor();
+        int currentBlockNumber = cursor.blockNumber();
+        int endBlockNumber = blockCount() - 1;
+
+        if (currentBlockNumber == endBlockNumber)
+            cursor.movePosition(QTextCursor::EndOfLine);
+        
+        else
+            cursor.movePosition(QTextCursor::Down);
+
+        setTextCursor(cursor);
+    
+    // ================================================
+
+    } else if (e->key() == Qt::Key_Tab) {
+
+        QString spaces = "    ";
+        insertPlainText(spaces);
+    
     } else {
         QPlainTextEdit::keyPressEvent(e);
     }
